@@ -19,7 +19,7 @@ func initializeNils(v reflect.Value) {
 
 	if v.Kind() == reflect.Slice {
 		// Initialize a nil slice.
-		if v.IsNil() {
+		if v.IsNil() && v.CanSet() {
 			v.Set(reflect.MakeSlice(v.Type(), 0, 0))
 			return
 		}
