@@ -1,4 +1,4 @@
-# nilslice.Initialize(obj) - fix `null` arrays in JSON
+# nilslice.Initialize(obj) - fix `null` arrays rendered by encoding/json
 
 Golang's `json.Marshal()` function has a very unfortunate behavior when encoding `nil` slices. It renders a `null` value in JSON instead of an empty array `[]`.
 
@@ -21,6 +21,10 @@ b, _ = json.Marshal(nilslice.Initialize(payload))
 fmt.Println(string(b))
 // {"items": []}
 ```
+
+## Fixed in encoding/json/v2 or bytedance/sonic
+
+The original issue https://github.com/golang/go/issues/27589 has been addressed in both `encoding/json/v2` and `github.com/bytedance/sonic` packages.
 
 ## Install
 ```shell
